@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>eTenders.lk Sales SOP - New Leads + Renewals</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1730;
+      --card:#111a2e;
+      --text:#e8eefc;
+      --muted:#a8b3d6;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --accent:#4f8cff;
+      --green:#34d399;
+      --warn:#fbbf24;
+      --red:#fb7185;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(79,140,255,.25), transparent 55%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(52,211,153,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+    .wrap{max-width:1180px; margin:0 auto; padding:28px 18px 60px}
+    header{
+      display:flex; gap:16px; align-items:flex-start; justify-content:space-between;
+      padding:18px 18px 12px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    h1{margin:0; font-size:20px; letter-spacing:.2px}
+    .sub{margin:6px 0 0; color:var(--muted); font-size:13px; max-width:760px}
+    .pillrow{display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end}
+    .pill{
+      padding:8px 10px; border-radius:999px;
+      background: rgba(79,140,255,.10);
+      border: 1px solid rgba(79,140,255,.25);
+      color: var(--text);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .pill.green{background: rgba(52,211,153,.10); border-color: rgba(52,211,153,.25)}
+    .pill.warn{background: rgba(251,191,36,.10); border-color: rgba(251,191,36,.25)}
+    .tabs{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .tabbtn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:12px;
+    }
+    .tabbtn.active{
+      background: rgba(79,140,255,.16);
+      border-color: rgba(79,140,255,.35);
+    }
+    .grid{
+      margin-top:14px;
+      display:grid; gap:14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 980px){
+      .grid{grid-template-columns: 1.25fr .75fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card h2{
+      margin:0; padding:14px 16px;
+      font-size:14px;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .card h2 small{color:var(--muted); font-weight:500; font-size:12px}
+    .content{padding:14px 16px}
+    .two{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px){
+      .two{grid-template-columns: 1fr 1fr}
+    }
+    .stepcol{
+      background: rgba(17,26,46,.55);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .coltitle{
+      display:flex; align-items:center; gap:10px;
+      margin:0 0 10px;
+      font-size:13px;
+      color:var(--text);
+    }
+    .badge{
+      width:10px; height:10px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(79,140,255,.15);
+      flex:0 0 auto;
+    }
+    .badge.green{background: var(--green); box-shadow: 0 0 0 4px rgba(52,211,153,.15)}
+    .badge.warn{background: var(--warn); box-shadow: 0 0 0 4px rgba(251,191,36,.15)}
+    .badge.red{background: var(--red); box-shadow: 0 0 0 4px rgba(251,113,133,.15)}
+    ol{
+      margin:0; padding-left:18px;
+      color: var(--text);
+    }
+    li{margin:8px 0}
+    li span{color:var(--muted); font-size:12px; display:block; margin-top:3px}
+    .callscript{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
+      font-size:12.5px;
+      color: var(--text);
+      background: rgba(15,23,48,.86);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:12px;
+      white-space:pre-wrap;
+      line-height:1.45;
+    }
+    .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-top:10px}
+    input[type="text"]{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(15,23,48,.9);
+      color: var(--text);
+      outline: none;
+    }
+    .btns{display:flex; flex-wrap:wrap; gap:10px}
+    button.action{
+      border:1px solid var(--line);
+      background: rgba(79,140,255,.14);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:12px;
+    }
+    button.action.secondary{background: rgba(255,255,255,.06)}
+    .note{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(251,191,36,.28);
+      background: rgba(251,191,36,.08);
+      color: var(--text);
+      font-size:12.5px;
+    }
+    .note.green{
+      border-color: rgba(52,211,153,.28);
+      background: rgba(52,211,153,.08);
+    }
+    footer{
+      margin-top:14px;
+      color: var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    .hidden{display:none !important}
+    @media print{
+      .tabs,.btns,button.action{display:none !important}
+      body{background:#fff !important; color:#000 !important}
+      .card,.stepcol,.callscript,header{box-shadow:none !important}
+      .card,header{border-color:#ddd !important}
+      .callscript{background:#fafafa !important}
+      .note{border-color:#ddd !important}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>eTenders.lk Sales SOP - New Leads + Renewals</h1>
+        <p class="sub">
+          Single-page guide for sales calls: New Leads (qualification + invoice + activation) and Renewals (guide online payment + post-payment Xero invoicing).
+        </p>
+      </div>
+      <div class="pillrow">
+        <div class="pill">SOP + Call Scripts</div>
+        <div class="pill green">Xero + Admin aligned</div>
+        <div class="pill warn">Online payment auto-update</div>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tabbtn active" id="tabNewBtn" onclick="showTab('new')">New Leads</button>
+      <button class="tabbtn" id="tabRenewBtn" onclick="showTab('renew')">Renewals</button>
+      <button class="tabbtn" onclick="window.print()">Print</button>
+    </div>
+
+    <!-- ===================== NEW LEADS TAB ===================== -->
+    <div id="tabNew" class="">
+      <div class="grid">
+        <section class="card">
+          <h2>
+            New Lead Process Infographic
+            <small>Call flow + Xero + Admin</small>
+          </h2>
+          <div class="content">
+            <div class="two">
+              <div class="stepcol">
+                <div class="coltitle"><span class="badge"></span>Call Flow (New Lead)</div>
+                <ol>
+                  <li>Pre-call: Open lead in eTenders Admin<span>Review company, contact, phone, email IDs, category (if available).</span></li>
+                  <li>Qualification question<span>“Are you interested in applying for government/private tenders or receiving tender information in Sri Lanka?”</span></li>
+                  <li>If NOT interested (Admin action order)<span>Update account manager email → set account inactive (Not Interested) → add note.</span></li>
+                  <li>If interested: Explain service<span>Daily alerts (3 categories, 3 email IDs), platform login, filters by date/company/category.</span></li>
+                  <li>Subscription confirmation<span>Ask “Would you like to subscribe?” → confirm term (6/12/24 months).</span></li>
+                  <li>Mention payment methods after verbal confirmation<span>Bank transfer, cheque, cash deposit, debit/credit card (online).</span></li>
+                  <li>End the call<span>“We will send the invoice shortly and follow up with you tomorrow.”</span></li>
+                </ol>
+              </div>
+
+              <div class="stepcol">
+                <div class="coltitle"><span class="badge green"></span>Post-Call: Xero + Activation</div>
+                <ol>
+                  <li>Xero: Create new contact<span>Use exactly the same details as eTenders Admin. No duplicates/variants.</span></li>
+                  <li>Xero: Create invoice<span>Select pre-uploaded subscription line item: 6 months / 1 year / 2 years.</span></li>
+                  <li>Xero: Approve & Send<span>Approve and send on the same invoice screen to client email.</span></li>
+                  <li>Admin: Update account manager email<span>Ensure your official eTenders email is assigned.</span></li>
+                  <li>Payment confirmation<span>Client emails proof or WhatsApp proof. If online card payment, Admin auto-updates.</span></li>
+                  <li>Xero: Record payment (always)<span>Mark invoice paid, payment date = actual funds received date.</span></li>
+                  <li>Admin activation (only non-online payments)<span>Activate subscription and set end date = 6/12/24 months from payment received date.</span></li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="note">
+              Online card payments auto-update eTenders Admin subscription/payment. For online payments: update Xero only and do not manually activate subscription in Admin.
+            </div>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h2>
+            New Lead Call Script
+            <small>Read and follow</small>
+          </h2>
+          <div class="content">
+            <div class="callscript" id="newScript">
+Hi, this is Rehan from eTenders.lk.
+
+Are you interested in applying for government or private tenders, or receiving information on tenders available in Sri Lanka?
+
+If yes: We provide daily tender alerts for up to 3 categories and up to 3 email IDs, plus full access to the eTenders.lk platform where you can filter tenders by publish date, company, and category/product/service.
+
+Would you like to subscribe?
+
+Subscription plans:
+- 6 Months: LKR 20,000
+- 1 Year: LKR 35,000
+- 2 Years: LKR 65,000
+
+Once you confirm the term, payment can be made via bank transfer, cheque, cash deposit, or debit/credit card (online).
+We will send you the invoice shortly and follow up with you tomorrow.
+            </div>
+
+            <div class="row" style="margin-top:12px;">
+              <div class="btns">
+                <button class="action" onclick="copyBlock('newScript')">Copy Script</button>
+                <button class="action secondary" onclick="toggleNotes('newNotes')">Show/Hide Admin Notes</button>
+              </div>
+            </div>
+
+            <div id="newNotes" class="note green hidden">
+              <b>Admin notes (Not Interested path):</b><br />
+              Update Account Manager Email ID → Set account Inactive (Not Interested) → Add note “Contacted - not interested.”
+            </div>
+
+            <footer>Internal use: New lead SOP + script.</footer>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ===================== RENEWALS TAB ===================== -->
+    <div id="tabRenew" class="hidden">
+      <div class="grid">
+        <section class="card">
+          <h2>
+            Renewal Process Infographic
+            <small>Client self-renew online + Xero invoice</small>
+          </h2>
+          <div class="content">
+            <div class="two">
+              <div class="stepcol">
+                <div class="coltitle"><span class="badge warn"></span>Client Side: Online Renewal</div>
+                <ol>
+                  <li>Log in to eTenders.lk<span>Existing username and password.</span></li>
+                  <li>Go to <b>My Profile</b><span>From top menu or account icon.</span></li>
+                  <li>Open <b>My Subscriptions</b><span>Subscription section under profile.</span></li>
+                  <li>Click <b>Renew</b> / <b>Make Payment</b><span>Starts checkout.</span></li>
+                  <li>Apply discount code at checkout<span>Concession for completing renewal online.</span></li>
+                  <li>Pay online and complete<span>Debit card / credit card payment.</span></li>
+                </ol>
+              </div>
+
+              <div class="stepcol">
+                <div class="coltitle"><span class="badge green"></span>Internal Team: After Client Pays</div>
+                <ol>
+                  <li>eTenders Admin: Check <b>Payment Records</b><span>Confirm successful transaction.</span></li>
+                  <li>Xero: Create <b>new invoice</b> (renewal)<span>Contact already exists in Xero for renewing clients.</span></li>
+                  <li>Select correct subscription line item<span>6 months / 1 year / 2 years, as renewed.</span></li>
+                  <li>Record payment and mark invoice <b>Paid</b><span>Payment date must match actual payment received date.</span></li>
+                  <li>Transaction complete<span>Online renewal auto-updates Admin subscription details.</span></li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="note">
+              Renewals are guided as an online payment. Admin subscription/payment updates automatically on successful online checkout. For renewals: create invoice and mark paid in Xero.
+            </div>
+          </div>
+        </section>
+
+        <aside class="card">
+          <h2>
+            Renewal Call Script
+            <small>Guide them to pay online</small>
+          </h2>
+          <div class="content">
+            <div class="callscript" id="renewScript">
+Hi, this is Rehan from eTenders.lk. I’m calling regarding your subscription renewal.
+
+Are you in front of a computer or mobile now so I can guide you to renew online? It takes about 2 minutes.
+
+1) Please log in to your eTenders.lk account.
+2) Go to My Profile.
+3) Open My Subscriptions.
+4) Click Renew / Make Payment.
+5) At checkout, enter the discount code: {CODE} and proceed with card payment.
+
+Once the payment is completed, your renewal is updated automatically in the system.
+Could you please confirm you received the payment success message or confirmation email?
+
+Thank you. Your renewal is completed.
+            </div>
+
+            <div class="row" style="margin-top:12px;">
+              <div style="flex:1 1 260px;">
+                <label for="promo" style="font-size:12px;color:var(--muted);display:block;margin:0 0 6px;">Discount code to share</label>
+                <input id="promo" type="text" value="ETLK2505" />
+              </div>
+              <div class="btns">
+                <button class="action" onclick="copyRenewScript()">Copy Script</button>
+                <button class="action secondary" onclick="copyPromo()">Copy Code</button>
+              </div>
+            </div>
+
+            <footer>Internal use: Renewal call guide + post-payment Xero steps.</footer>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showTab(which){
+      const tabNew = document.getElementById('tabNew');
+      const tabRenew = document.getElementById('tabRenew');
+      const btnNew = document.getElementById('tabNewBtn');
+      const btnRenew = document.getElementById('tabRenewBtn');
+
+      if(which === 'new'){
+        tabNew.classList.remove('hidden');
+        tabRenew.classList.add('hidden');
+        btnNew.classList.add('active');
+        btnRenew.classList.remove('active');
+      } else {
+        tabRenew.classList.remove('hidden');
+        tabNew.classList.add('hidden');
+        btnRenew.classList.add('active');
+        btnNew.classList.remove('active');
+      }
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function copyText(text){
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text);
+      } else {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+    }
+
+    function copyBlock(id){
+      const txt = document.getElementById(id).innerText.trim();
+      copyText(txt);
+    }
+
+    function copyPromo(){
+      const code = (document.getElementById('promo').value || '').trim();
+      copyText(code);
+    }
+
+    function copyRenewScript(){
+      const code = (document.getElementById('promo').value || '').trim();
+      const base = document.getElementById('renewScript').innerText.trim();
+      copyText(base.replace('{CODE}', code || ''));
+    }
+
+    function toggleNotes(id){
+      const el = document.getElementById(id);
+      el.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>
